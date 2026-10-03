@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Insecure App</title>
+</head>
+<body>
+    <h1>Welcome to the Insecure Application</h1>
+    <div id="greeting"></div>
+
+    <script>
+        // XSS VULNERABILITY: Directly inserting user-controlled input as HTML
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name') || 'Guest';
+        document.getElementById('greeting').innerHTML = "Hello, " + name + "!";
+    </script>
+</body>
+</html>
